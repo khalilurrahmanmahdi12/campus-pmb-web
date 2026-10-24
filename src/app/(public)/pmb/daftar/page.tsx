@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import {
   User,
@@ -25,7 +25,7 @@ interface ProdiOption {
   faculty: { name: string };
 }
 
-export default function PmbRegisterPage() {
+function PmbRegisterContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const preselectedProdi = searchParams.get('prodi') || '';
@@ -552,3 +552,21 @@ export default function PmbRegisterPage() {
     </div>
   );
 }
+
+export default function PmbRegisterPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen py-16 flex items-center justify-center">
+          <div className="flex items-center gap-3 text-slate-500 font-semibold">
+            <div className="w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+            Memuat Formulir Pendaftaran...
+          </div>
+        </div>
+      }
+    >
+      <PmbRegisterContent />
+    </Suspense>
+  );
+}
+
