@@ -4,7 +4,8 @@ import { prisma } from '@/lib/prisma';
 import { formatRupiah } from '@/lib/utils';
 import { GraduationCap, ArrowRight, Award, Users, BookOpen } from 'lucide-react';
 
-export const revalidate = 60;
+// Ubah dari revalidate menjadi force-dynamic agar data diambil saat runtime
+export const dynamic = 'force-dynamic';
 
 export default async function ProdiPage() {
   const faculties = await prisma.faculty.findMany({
