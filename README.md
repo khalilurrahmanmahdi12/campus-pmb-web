@@ -18,7 +18,7 @@ Aplikasi ini menyediakan sistem **Penerimaan Mahasiswa Baru (PMB) end-to-end** d
 
 ---
 
-## 📜 Sertifikat Kompetensi
+## 📜 Sertifikat Kompetensi BNSP
 
 <table>
   <tr>
@@ -30,8 +30,8 @@ Aplikasi ini menyediakan sistem **Penerimaan Mahasiswa Baru (PMB) end-to-end** d
     <td>62019 2513 4 00008866 2026</td>
   </tr>
   <tr>
-    <td><strong>Pemegang</strong></td>
-    <td>Khalilurrahman Mahdi (No. Reg. TIK.291.0170 2026)</td>
+    <td><strong>Pemegang Sertifikat</strong></td>
+    <td>Khalilurrahman Mahdi</td>
   </tr>
   <tr>
     <td><strong>Kompetensi</strong></td>
@@ -42,28 +42,31 @@ Aplikasi ini menyediakan sistem **Penerimaan Mahasiswa Baru (PMB) end-to-end** d
     <td>Pengembangan Perangkat Lunak / <em>Software Development</em></td>
   </tr>
   <tr>
+    <td><strong>Tanggal Penerbitan</strong></td>
+    <td>Samarinda, 24 Juni 2026</td>
+  </tr>
+  <tr>
     <td><strong>Masa Berlaku</strong></td>
-    <td>3 (tiga) Tahun — Samarinda, 24 Juni 2026</td>
+    <td>3 (tiga) tahun</td>
   </tr>
   <tr>
     <td><strong>LSP Penerbit</strong></td>
     <td>Lembaga Sertifikasi Profesi Politeknik Negeri Samarinda</td>
   </tr>
-  <tr>
-    <td><strong>Ketua LSP</strong></td>
-    <td>Dr. Eng. Ir. Hidayat, S.T., M.T.</td>
-  </tr>
 </table>
 
-> Proyek ini mencakup seluruh unit kompetensi **Junior Web Programmer** meliputi:
->
-> - ✅ Merancang dan membangun aplikasi web fullstack (Frontend & Backend)
-> - ✅ Mengimplementasikan sistem database relasional (PostgreSQL / Supabase)
-> - ✅ Mengintegrasikan API pihak ketiga (Payment Gateway — Midtrans Snap)
-> - ✅ Menerapkan autentikasi dan otorisasi pengguna (JWT & Bcrypt)
-> - ✅ Membuat antarmuka pengguna (UI) yang responsif dan modern
-> - ✅ Melakukan deployment aplikasi ke cloud (Vercel + Supabase)
-> - ✅ Mengelola version control menggunakan Git & GitHub
+### 🛠️ Unit Kompetensi
+
+Sertifikat kompetensi **Junior Web Programmer** ini mencakup 7 unit kompetensi berikut:
+
+- ✅ **Menggunakan Data Struktur** (*Using the Data Structure*)
+- ✅ **Melaksanakan Interface Pengguna** (*Implementing the Software User Interface*)
+- ✅ **Menginstalasi Pemrograman Perangkat Lunak** (*Installing the Software Tools Programming*)
+- ✅ **Menulis Kode Sesuai Panduan dan Pengalaman Terbaik yang Ada**
+- ✅ **Melaksanakan Pemrograman Terstruktur** (*Implementing the Structured Programming*)
+- ✅ **Menggunakan Library atau Komponen yang Sudah Ada Sebelumnya** (*Using Pre-existing Library or Components*)
+- ✅ **Membuat Dokumen Kode Program** (*Producing a Program Code Document*)
+- ✅ **Melakukan Debugging** (*Conducting Debugging*)
 
 ---
 
