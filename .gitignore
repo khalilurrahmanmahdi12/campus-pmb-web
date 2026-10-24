@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Environment variables (rahasia, jangan di-commit!)
+.env
+.env.local
+
+# Debug logs
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Prisma
+prisma/*.db
+
+# IDE
+.vscode/
+.idea/
+
+# Vercel
+.vercel/

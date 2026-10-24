@@ -1,0 +1,128 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Gender {
+  LAKI_LAKI
+  PEREMPUAN
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  EXPIRED
+  FAILED
+  CANCELLED
+}
+
+enum AdmissionStatus {
+  MENUNGGU_VERIFIKASI
+  DIVERIFIKASI
+  LULUS
+  TIDAK_LULUS
+}
+
+model Admin {
+  id           String         @id @default(uuid())
+  name         String
+  email        String         @unique
+  passwordHash String
+  role         String         @default("ADMIN") // SUPERADMIN, ADMIN
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  announcements Announcement[]
+}
+
+model Faculty {
+  id          String         @id @default(uuid())
+  name        String
+  code        String         @unique
+  description String?        @db.Text
+  createdAt   DateTime       @default(now())
+  majors      StudyProgram[]
+}
+
+model StudyProgram {
+  id             String      @id @default(uuid())
+  facultyId      String
+  faculty        Faculty     @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+  name           String
+  degree         String      @default("S1") // S1, D3, D4, S2
+  code           String      @unique
+  accreditation  String      @default("Unggul") // Unggul, Baik Sekali, Baik, A, B
+  capacity       Int         @default(100)
+  registrationFee Int        @default(250000)
+  description    String?     @db.Text
+  applicants     Applicant[]
+  createdAt      DateTime    @default(now())
+}
+
+model Applicant {
+  id              String          @id @default(uuid())
+  registrationNo  String          @unique // Contoh: PMB20250001
+  fullName        String
+  nik             String          @unique
+  email           String
+  phone           String
+  gender          Gender          @default(LAKI_LAKI)
+  birthPlace      String
+  birthDate       DateTime
+  address         String          @db.Text
+  schoolOrigin    String
+  graduationYear  Int
+  averageScore    Float           @default(0)
+  
+  majorId         String
+  major           StudyProgram    @relation(fields: [majorId], references: [id])
+  
+  paymentStatus   PaymentStatus   @default(PENDING)
+  admissionStatus AdmissionStatus @default(MENUNGGU_VERIFIKASI)
+  notes           String?         @db.Text
+  
+  payments        Payment[]
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+}
+
+model Payment {
+  id                String        @id @default(uuid())
+  applicantId       String
+  applicant         Applicant     @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  orderId           String        @unique // Contoh: PMB-PAY-XXXXXX
+  amount            Int
+  paymentType       String?       // qris, bank_transfer, gopay, cstore, dll.
+  transactionStatus PaymentStatus @default(PENDING)
+  fraudStatus       String?
+  snapToken         String?       @db.Text
+  rawMidtransData   String?       @db.Text
+  paidAt            DateTime?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+}
+
+model Announcement {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  content     String   @db.Text
+  category    String   @default("INFO_PMB") // INFO_PMB, AKADEMIK, BEASISWA
+  imageUrl    String?
+  isPublished Boolean  @default(true)
+  authorId    String?
+  author      Admin?   @relation(fields: [authorId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Setting {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       String   @db.Text
+  description String?
+  updatedAt   DateTime @updatedAt
+}
